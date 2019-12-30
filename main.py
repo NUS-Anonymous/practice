@@ -1,5 +1,7 @@
 from image import Image
 from datetime import datetime
+import pickle
+
 
 def read_file(index):
     directory = "qualification_round_2019.in/"
@@ -42,14 +44,16 @@ def scoring(image1, image2):
 
 def main():
     print("This is Main")
-    numb_of_images, photos_list = read_file(2)
-    start = datetime.now()
-    # pieces = solution_1(photos_list)
-    solution_1(photos_list)
-    stop = datetime.now()
-
-    print("Run time: {}".format(stop-start))
-
+    for i in range(5):
+        numb_of_images, photos_list = read_file(i)
+        start = datetime.now()
+        pieces = solution_1(photos_list)
+        # solution_1(photos_list)
+        stop = datetime.now()
+        print("Run time: {} for input file {}".format((stop - start), i))
+        pickle_out = open("pieces_" + i+".pickle", "wb")
+        pickle.dump(pieces, pickle_out)
+        pickle_out.close()
 
     # final_scoring_system(handled_photos_in_order)
 
