@@ -51,7 +51,7 @@ def main():
         # solution_1(photos_list)
         stop = datetime.now()
         print("Run time: {} for input file {}".format((stop - start), i))
-        pickle_out = open("pieces_" + i+".pickle", "wb")
+        pickle_out = open("pieces_" + str(i) + ".pickle", "wb")
         pickle.dump(pieces, pickle_out)
         pickle_out.close()
 
@@ -67,7 +67,9 @@ def solution_2(photos_list):
     count = 0;
     while len(unhandle_photos) != 0:
         count += 1
-        print("{} - {} - Processing Image Number {}".format(datetime.now(), count, curr_index))
+        if count % 500 == 0:
+            print("{} - {} - Processing Image Number {}".format(datetime.now(), count, curr_index))
+
         unhandle_photos.remove(curr_index)
 
         if photos_list[curr_index].orientation == "V":
@@ -102,10 +104,13 @@ def solution_1(photos_list):
     curr_index = start_image
     pieces = []
     handled_photos_in_order = []
-    count = 0;
+    count = 0
     while len(unhandle_photos) != 0:
         count += 1
-        print("{} - {} - Processing Image Number {}".format(datetime.now(), count, curr_index))
+
+        if count % 500 == 0:
+            print("{} - {} - Processing Image Number {}".format(datetime.now(), count, curr_index))
+
         unhandle_photos.remove(curr_index)
 
         if photos_list[curr_index].orientation == "V":
