@@ -3,15 +3,15 @@ import pickle
 from common_function import *
 from random import randint
 
-def start_solution_1(photos_list):
+def start_solution_1_b(photos_list):
     start = datetime.now()
-    order_slide = solution_1(photos_list)
+    order_slide = solution_1_b(photos_list)
     stop = datetime.now()
     print("Run time: {} for input file {}".format((stop - start), 2))
     return order_slide
 
 
-def solution_1(photos_list):
+def solution_1_b(photos_list):
     start_image = randint(0, len(photos_list)-1)
     while photos_list[start_image].orientation != "V":
         start_image = randint(0, len(photos_list) - 1)
@@ -20,7 +20,6 @@ def solution_1(photos_list):
     pieces = []
     handled_photos_in_order = []
     count = 0
-    vertical_count = 0
     while len(unhandle_photos) != 0 and curr_index != -1:
         count += 1
         if count % 500 == 0:
