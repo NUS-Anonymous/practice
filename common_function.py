@@ -9,7 +9,8 @@ def read_file(index):
     with open(filepath) as fp:
         # Read First line
         numb_of_images = int(fp.readline())
-        print("Processing number of images {}".format(numb_of_images))
+        print("-----------------------------------")
+        print("Processing number of images {} from {}".format(numb_of_images, filepath))
         for i in range(numb_of_images):
             inputs = fp.readline().strip().split(" ")
             orientation = inputs[0]
@@ -56,8 +57,8 @@ def final_scoring_system(photos_list):
     if len(stack) % 2 != 0:
         print("Error")
         return
-
-    print('--------------------------')
+    print()
+    print('*********RESULT***********')
     print("Resulted Score Table")
     [print(i) for i in slides]
 
